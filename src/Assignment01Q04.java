@@ -4,6 +4,42 @@ public class Assignment01Q04 {
 
     public static int[] shiftArrayCyclic(int[] array, int move, char direction) {
         // TODO: implement
+        int length = array.length;
+        if(direction == 'L'){
+            return shiftArrayCyclic(array, -move, 'R');
+        } else if(direction == 'R'){
+            if(move < 0){
+                return shiftArrayCyclic(array,length + move, direction);
+            } else if (move > 0) {
+                int i = 0;
+                int j = move;
+                int tmp = array[0];
+                int tmp2;
+                int start = 0;
+                while (i < length) {
+                    if(j >= length){
+                        j -= length;
+                    } else if(j == start ){
+                        array[j] = tmp;
+                        start += 1;
+                        j +=1;
+                        tmp = array[j];
+                        j += move;
+                        i++;
+                    } else {
+                        tmp2 = array[j];
+                        array[j] = tmp;
+                        tmp = tmp2;
+                        j += move;
+                        i++;
+                    }
+                    
+                }
+
+            }
+        }
+
+
         return array;
     }
 
